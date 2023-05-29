@@ -1,0 +1,19 @@
+.flight-time {
+    &__content {
+        display: flex;
+        justify-content: center;
+        cursor: pointer;
+        gap: 10px;
+        margin-top: 15px;
+        padding-bottom: 15px;
+    }
+}
+
+.seat-detail {
+    height: 400px;
+    box-shadow: 0 1px 7px 1px hsla(0, 0%, 59.6%, 0.3);
+    border: 1px solid $flightListHeaderBg;
+    background-color: $white;
+    display: flex;
+    justify-content: center;
+}
