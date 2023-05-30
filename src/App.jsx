@@ -17,7 +17,7 @@ const App = () => {
         <Route path="/" element={<AppLayout />}>
           <Route index element={<FlightInquiryPage />} />
           <Route path="/list" element={<FlightList />} />
-          <Route path="/cabin" element={<CabinSelection />} />
+          <Route path="/result" element={<CabinSelection />} />
         </Route>
 
         { /* CATCH ALL */}

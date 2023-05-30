@@ -26,14 +26,19 @@ const SeatCard = props => {
                             })}
                         </div>
                         <div className="seat-card-container__item__bottom">
-                            <Button disabled={item.status !== 'AVAILABLE'} className="seat-card-container__item__bottom__btn" onClick={() => selectSeat(item)}>
+                            <Button
+                                disabled={false}
+                                className={item.status !== 'AVAILABLE' ? "seat-card-container__item__bottom__disabled-btn" : "seat-card-container__item__bottom__btn"}
+                                onClick={() => selectSeat(item.status, item.price.amount)}
+
+                            >
                                 Uçuşu Seç
                             </Button></div>
                     </div>
                 )
             })}
 
-        </div>
+        </div >
     )
 }
 

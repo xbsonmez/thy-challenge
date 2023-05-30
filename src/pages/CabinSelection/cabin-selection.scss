@@ -1,0 +1,57 @@
+@import 'Styles/utilty/variable.scss';
+
+.cabin-selection {
+    margin-top: 64px;
+    padding: 0 20px;
+    height: calc(100vh - 64px);
+
+    &__successful {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-around;
+        text-align: center;
+
+        &__text {
+            padding-top: 10px;
+            margin: auto;
+            border-bottom: 1px solid $secondBg;
+            padding: 10px;
+        }
+
+        &__price {
+            display: flex;
+            justify-content: center;
+            gap: 95px;
+            padding: 40px;
+
+            &__text {
+                color: $priceBlue;
+            }
+        }
+    }
+
+    &__error {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-around;
+        text-align: center;
+
+        &__text {
+            padding-top: 10px;
+            margin: auto;
+            border-bottom: 1px solid $secondBg;
+            padding: 10px;
+        }
+
+        &__bottom {
+            padding: 20px;
+            padding-left: 200px;
+
+            &__btn {
+                padding: 12px 20px;
+                color: $white;
+                background-color: $flightSelectBtnBg;
+            }
+        }
+    }
+}

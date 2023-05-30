@@ -4,10 +4,13 @@ import FlightListHeader from "../FlightListHeader";
 import SeatCard from "../SeatCard";
 import FlightCard from "./FlightCard";
 import FlightSeatCard from "./FlightSeatCard";
+import { useNavigate } from "react-router-dom";
 
 const FlightTime = props => {
 
-    const { flights } = props;
+    const navigate = useNavigate();
+
+    const { flights, passenger } = props;
 
     const [selectType, setSelectType] = useState('');
 
@@ -22,8 +25,14 @@ const FlightTime = props => {
         }
     };
 
-    const selectSeat = val => {
-        console.log('VALLL ', val);
+    const selectSeat = (val, price) => {
+
+        navigate('/result', {
+            replace: false, state: {
+                status: val, price: Math.round(price * passenger * 100) / 100
+            }
+        });
+
     }
 
     const renderSeatDetail = val => {
