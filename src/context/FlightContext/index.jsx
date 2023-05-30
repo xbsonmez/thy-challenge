@@ -7,6 +7,7 @@ import React, {
 } from 'react';
 
 import flightsData from "Constants/flights.json";
+import { uuidv4 } from '../../utils/generateUuidv4';
 
 
 const FlightContext = createContext();
@@ -25,11 +26,12 @@ export function useFlightContext() {
 export function FlightProvider({ children }) {
 
     //additional 
-    localStorage.setItem('flights', JSON.stringify(flightsData));
+    localStorage.setItem('uniqueDeviceID', uuidv4());
 
     const [flight, setFlights] = useState(flightsData);
 
     const [originAirport, setOriginAirports] = useState([]);
+
 
     const [destinationAirpors, setDestionationAirports] = useState([]);
 
@@ -56,12 +58,11 @@ export function FlightProvider({ children }) {
         });
         setOriginAirports(flightOriginCity);
 
-
         setDestionationAirports(flightDestinationCity);
-        const flightsFromLocalStorage = JSON.parse(
-            localStorage.getItem('flights')
-        );
-        setFlights(flightsFromLocalStorage);
+
+        console.log('deviceId =>>', localStorage.getItem('uniqueDeviceID'));
+
+        setFlights(flightsData);
     }, [flightsData.flights]);
 
 
