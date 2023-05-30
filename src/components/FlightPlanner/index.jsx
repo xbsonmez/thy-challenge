@@ -47,7 +47,6 @@ const FlightPlanner = props => {
         setIsModalOpen(false);
     };
     const searchPlane = e => {
-        debugger;
         if (origin === undefined || destination === undefined || counter === 0) {
             showModal();
         } else {
