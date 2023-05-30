@@ -7,45 +7,65 @@
 
     &__successful {
         display: flex;
-        flex-direction: column;
-        justify-content: space-around;
-        text-align: center;
+        justify-content: center;
+
+        &__container {
+            width: 750px;
+            margin: 80px 0;
+        }
 
         &__text {
-            padding-top: 10px;
             margin: auto;
-            border-bottom: 1px solid $secondBg;
-            padding: 10px;
+            border-bottom: 1px solid rgba(96, 105, 119, 0.6);
+            padding: 20px 0;
+            font-weight: 600;
+            color: #33383a;
+            gap: 20px;
+            display: flex;
         }
 
         &__price {
             display: flex;
-            justify-content: center;
-            gap: 95px;
-            padding: 40px;
+            justify-content: space-between;
+                padding: 20px 0;
+            font-size: 25px;
+
+            &__title {
+              color: $secondBg;
+              font-weight: 100;
+            }
 
             &__text {
                 color: $priceBlue;
+                font-weight: 400;
+                font-size: 22px;
             }
         }
     }
 
     &__error {
         display: flex;
-        flex-direction: column;
-        justify-content: space-around;
-        text-align: center;
+        justify-content: center;
+
+        &__container {
+            width: 750px;
+            margin: 10px;
+        }
 
         &__text {
-            padding-top: 10px;
             margin: auto;
-            border-bottom: 1px solid $secondBg;
-            padding: 10px;
+            border-bottom: 1px solid rgba(96, 105, 119, 0.6);
+            padding: 20px 0;
+            font-weight: 600;
+            color: #33383a;
+            gap: 20px;
+            display: flex;
         }
 
         &__bottom {
-            padding: 20px;
-            padding-left: 200px;
+            padding-top: 20px;
+            display: flex;
+            justify-content: end;
 
             &__btn {
                 padding: 12px 20px;

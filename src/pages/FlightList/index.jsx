@@ -25,6 +25,11 @@ const FlightList = () => {
                 <div className="flight-list__title">Uçuş</div>
                 <div className="flight-list__info"><p> {origin} - {destination} , {passenger} Yolcu </p> </div>
                 <div className="flight-list__switch"> <span>Promosyon Kodu </span> <Switch onChange={onChange} checked={promosyonStatus} />  </div>
+                {promosyonStatus && <div className="flight-list__promosyon-active">
+                    <div>Promosyon Kodu seçeneği ile tüm Economy kabini Eco Fly paketlerini %50 indirimle indirim alabilirsiniz!</div>
+                    <div>Promosyon Kodu seçeneği aktifken Eco Fly paketi haricinde seçim yapılamamaktadır. </div>
+                </div>
+                }
 
                 <FlightTime flights={flight?.flights} passenger={passenger} promosyonStatus={promosyonStatus} />
             </div>

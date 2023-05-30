@@ -89,6 +89,7 @@ const FlightTime = props => {
                                     isEconomy={true}
                                     selectType={selectType}
                                     type={index + 'a'}
+                                    promosyonStatus={promosyonStatus}
                                 />
                             </div>
 
@@ -98,6 +99,7 @@ const FlightTime = props => {
                                     isEconomy={false}
                                     selectType={selectType}
                                     type={index + 'b'}
+                                    promosyonStatus={promosyonStatus}
                                 />
                             </div>
                         </div>

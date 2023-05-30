@@ -3,7 +3,7 @@ import { Radio } from 'antd';
 
 const FlightSeatCard = props => {
 
-    const { data, isEconomy, selectType, type } = props;
+    const { data, isEconomy, selectType, type, promosyonStatus } = props;
 
     const SeatCard = () => {
         const item = isEconomy ? (data.fareCategories?.ECONOMY?.subcategories?.[0].price.currency + ' ' + data.fareCategories?.ECONOMY?.subcategories?.[0].price.amount)
@@ -13,7 +13,7 @@ const FlightSeatCard = props => {
                 <div>
                     Yolcu Başına
                 </div>
-                <div> {item}  </div>
+                <div> {(promosyonStatus && isEconomy) ? Math.round((data.fareCategories?.ECONOMY?.subcategories?.[0].price.amount / 2)) : item}  </div>
             </div>
         );
     };
