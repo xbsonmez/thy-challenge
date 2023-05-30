@@ -3,7 +3,8 @@ import Button from "../Button";
 
 const SeatCard = props => {
 
-    const { data, selectSeat } = props;
+    const { data, selectSeat, promosyonStatus, isEco } = props;
+
     return (
         <div className="seat-card-container">
             {data.map((item, index) => {
@@ -16,7 +17,7 @@ const SeatCard = props => {
                                     {item.price.currency}
                                 </div>
                                 <div className="seat-card-container__item__title__bold-text">
-                                    {item.price.amount}
+                                    {(promosyonStatus && item.brandCode === 'ecoFly') ? (item.price.amount / 2) : item.price.amount}
                                 </div>
                             </div>
                         </div>
@@ -27,8 +28,8 @@ const SeatCard = props => {
                         </div>
                         <div className="seat-card-container__item__bottom">
                             <Button
-                                disabled={false}
-                                className={item.status !== 'AVAILABLE' ? "seat-card-container__item__bottom__disabled-btn" : "seat-card-container__item__bottom__btn"}
+                                disabled={(promosyonStatus && item.brandCode !== 'ecoFly') || (promosyonStatus && !isEco)}
+                                className={(promosyonStatus && item.brandCode !== 'ecoFly' || (promosyonStatus && !isEco)) ? "seat-card-container__item__bottom__disabled-btn" : "seat-card-container__item__bottom__btn"}
                                 onClick={() => selectSeat(item.status, item.price.amount)}
 
                             >

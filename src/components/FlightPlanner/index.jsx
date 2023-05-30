@@ -8,7 +8,7 @@ import {
     faPerson
 } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { Popover, Radio } from 'antd';
+import { Popover, Radio, Modal } from 'antd';
 import { useNavigate } from "react-router-dom";
 
 
@@ -33,8 +33,26 @@ const FlightPlanner = props => {
         }
     };
 
+    const [isModalOpen, setIsModalOpen] = useState(false);
+
+    const showModal = () => {
+        setIsModalOpen(true);
+    };
+
+    const handleOk = () => {
+        setIsModalOpen(false);
+    };
+
+    const handleCancel = () => {
+        setIsModalOpen(false);
+    };
     const searchPlane = e => {
-        navigate('/list', { replace: false, state: { origin, destination, passenger: counter } });
+        debugger;
+        if (origin === undefined || destination === undefined || counter === 0) {
+            showModal();
+        } else {
+            navigate('/list', { replace: false, state: { origin, destination, passenger: counter } });
+        }
     }
 
 
@@ -118,6 +136,10 @@ const FlightPlanner = props => {
                     <div style={{ fontSize: '32px', color: 'white' }}>{'>'}</div>
                 </Button>
             </div>
+
+            <Modal title="Hata" open={isModalOpen} onOk={handleOk} onCancel={handleCancel}>
+                <p>Lütfen Seçim Yapınız.</p>
+            </Modal >
 
         </div>
     )

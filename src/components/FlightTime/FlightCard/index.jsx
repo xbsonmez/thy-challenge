@@ -2,31 +2,30 @@ import React from "react";
 
 const FlightCard = props => {
 
-    const { arrivalDateTimeDisplay, code, name } = props;
-
+    const { originAirport, destinationAirport, flightDuration, arrivalDateTimeDisplay, departureDateTimeDisplay } = props;
 
 
     return (
         <div className={'flight-card'}>
             <div className="flight-card__arrival">
                 <div>{arrivalDateTimeDisplay}</div>
-                <div>{code}</div>
-                <div>{name}</div>
+                <div>{originAirport.city.code}</div>
+                <div>{originAirport.city.name}</div>
             </div>
             <div className="flight-card__solid">
 
             </div>
             <div className="flight-card__destination">
-                <div>{arrivalDateTimeDisplay}</div>
-                <div>{code}</div>
-                <div>{name}</div>
+                <div>{departureDateTimeDisplay}</div>
+                <div>{destinationAirport.city.code}</div>
+                <div>{destinationAirport.city.name}</div>
             </div>
             <div className="flight-card__timer">
                 <div>{'Uçuş Süresi'} </div>
-                <div>{'1h 30m'} </div>
+                <div>{flightDuration} </div>
             </div>
         </div>
     )
 }
 
-export default FlightCard;
+export default React.memo(FlightCard);

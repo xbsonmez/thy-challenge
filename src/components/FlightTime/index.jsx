@@ -1,5 +1,4 @@
-import React from "react";
-import { useState } from "react";
+import React, { useState } from "react";
 import FlightListHeader from "../FlightListHeader";
 import SeatCard from "../SeatCard";
 import FlightCard from "./FlightCard";
@@ -10,9 +9,12 @@ const FlightTime = props => {
 
     const navigate = useNavigate();
 
-    const { flights, passenger } = props;
+    const { flights, passenger, promosyonStatus } = props;
+
+    const [flightsOrdered, setFlighthOrdered] = useState(flights);
 
     const [selectType, setSelectType] = useState('');
+
 
     const selectSeatType = e => {
         e.stopPropagation();
@@ -35,6 +37,19 @@ const FlightTime = props => {
 
     }
 
+    const setFlightAccordingToTime = () => {
+        const temp = flights.sort((a, b) => {
+            return (a.arrivalDateTimeDisplay.split(':').join('') + 1) - (b.arrivalDateTimeDisplay.split(':').join('') + 1);
+        });
+        setFlighthOrdered([...temp]);
+    };
+
+    const setFlightAccordingToPrice = () => {
+
+        const temp = flights.sort((a, b) => { return a.fareCategories.ECONOMY.subcategories[0].price.amount - b.fareCategories.ECONOMY.subcategories[0].price.amount });
+        setFlighthOrdered([...temp]);
+    };
+
     const renderSeatDetail = val => {
         const isEco = selectType.includes('a');
         let data;
@@ -46,23 +61,27 @@ const FlightTime = props => {
 
         return (
             <div className="seat-detail">
-                <div><SeatCard data={data} selectSeat={selectSeat} /></div>
+                <div><SeatCard data={data} promosyonStatus={promosyonStatus} selectSeat={selectSeat} isEco={isEco} /></div>
             </div>
         );
     };
 
+
     return (
         <div className={'flight-time'}>
-            <FlightListHeader />
+            <FlightListHeader setFlightAccordingToTime={setFlightAccordingToTime} setFlightAccordingToPrice={setFlightAccordingToPrice} />
 
-            {flights?.map((item, index) => {
+            {flightsOrdered.length > 0 && flightsOrdered?.map((item, index) => {
                 return (
                     <div style={{ display: 'block' }} key={index}>
                         <div key={index} className={'flight-time__content'} >
                             <FlightCard
+                                flightDuration={item.flightDuration}
+                                originAirport={item.originAirport}
+                                destinationAirport={item.destinationAirport}
                                 arrivalDateTimeDisplay={item.arrivalDateTimeDisplay}
-                                code={item.originAirport.city.code}
-                                name={item.originAirport.city.name}
+                                departureDateTimeDisplay={item.departureDateTimeDisplay}
+
                             />
                             <div id={index + 'a'} onClick={(e) => selectSeatType(e)}>
                                 <FlightSeatCard

@@ -26,7 +26,7 @@ const FlightList = () => {
                 <div className="flight-list__info"><p> {origin} - {destination} , {passenger} Yolcu </p> </div>
                 <div className="flight-list__switch"> <span>Promosyon Kodu </span> <Switch onChange={onChange} checked={promosyonStatus} />  </div>
 
-                <FlightTime flights={flight?.flights} passenger={passenger} />
+                <FlightTime flights={flight?.flights} passenger={passenger} promosyonStatus={promosyonStatus} />
             </div>
         </div>
     )
