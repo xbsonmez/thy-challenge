@@ -23,6 +23,10 @@ export function useFlightContext() {
 }
 
 export function FlightProvider({ children }) {
+
+    //additional 
+    localStorage.setItem('flights', JSON.stringify(flightsData));
+
     const [flight, setFlights] = useState(flightsData);
 
     const [originAirport, setOriginAirports] = useState([]);
@@ -51,7 +55,13 @@ export function FlightProvider({ children }) {
             }
         });
         setOriginAirports(flightOriginCity);
+
+
         setDestionationAirports(flightDestinationCity);
+        const flightsFromLocalStorage = JSON.parse(
+            localStorage.getItem('flights')
+        );
+        setFlights(flightsFromLocalStorage);
     }, [flightsData.flights]);
 
 
