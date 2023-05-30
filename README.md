@@ -9,3 +9,10 @@
 
 #Start
 - npm run dev
+
+
+#Tools
+-font-awesome
+-ant design
+-sass
+-vite
