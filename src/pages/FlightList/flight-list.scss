@@ -4,6 +4,13 @@
     margin-top: 64px;
     padding: 0 20px;
     height: calc(100vh - 64px);
+    display: flex;
+    flex-direction: column;
+
+    &__container {
+        max-width: 1200px;
+        margin: 0 auto;       
+    }
 
     &__title {
         background-color: $flightSelectBtnBg;
@@ -14,7 +21,7 @@
     }
 
     &__info {
-        font-size: 18px;
+        font-size: 20px;
         color: $flightDatePickerBg;
     }
 

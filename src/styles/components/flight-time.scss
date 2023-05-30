@@ -1,4 +1,7 @@
 .flight-time {
+    display: block;
+    max-width: 1200px;
+    
     &__content {
         display: flex;
         justify-content: center;
